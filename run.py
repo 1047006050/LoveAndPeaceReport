@@ -46,7 +46,8 @@ if __name__ == "__main__":
 
     r1 = auth.session.get(URL_UNREAD_LIST)
     r1 = auth.session.get(URL_INDEX)
-    for count in range(10):
+    for count in range(1):
+    # for count in range(10):
         log.info('尝试获取打卡列表信息...')
         r = auth.session.get(URL_JKDK_LIST)
         if r.status_code != 200:
