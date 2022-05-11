@@ -58,7 +58,7 @@ if __name__ == "__main__":
         if dk_info['TBZT'] == "0":
             wid = dk_info['WID']
             data = "?WID={}&IS_TWZC=1&CURR_LOCATION={}&ZJHSJCSJ={}&JRSKMYS=1&IS_HAS_JKQK=1&JZRJRSKMYS=1&SFZJLN=1".format(
-                wid, curr_location, hs_date)
+                wid, curr_location, "2022-05-11 08")
             url = URL_JKDK_APPLY + data
             log.info('正在打卡')
             auth.session.get(url)
