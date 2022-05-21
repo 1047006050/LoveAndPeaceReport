@@ -46,8 +46,7 @@ if __name__ == "__main__":
 
     r1 = auth.session.get(URL_UNREAD_LIST)
     r1 = auth.session.get(URL_INDEX)
-    for count in range(1):
-    #for count in range(10):
+    for count in range(10):
         log.info('尝试获取打卡列表信息...')
         r = auth.session.get(URL_JKDK_LIST)
         if r.status_code != 200:
@@ -56,7 +55,7 @@ if __name__ == "__main__":
             continue
 
         dk_info = json.loads(r.text)['data'][0]
-        if True:
+        if 1:
         #if dk_info['TBZT'] == "0":
             wid = dk_info['WID']
             data = "?WID={}&IS_TWZC=1&CURR_LOCATION={}&ZJHSJCSJ={}&JRSKMYS=1&IS_HAS_JKQK=1&JZRJRSKMYS=1&SFZJLN=1".format(
