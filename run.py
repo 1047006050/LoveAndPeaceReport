@@ -47,7 +47,7 @@ if __name__ == "__main__":
 
     r1 = auth.session.get(URL_UNREAD_LIST)
     yesterday = str((datetime.datetime.today() + datetime.timedelta(-1)).date()) + " 08"
-    log.info('昨天是',yesterday)
+    log.info(yesterday)
     for count in range(10):
         log.info('尝试获取打卡列表信息...')
         r = auth.session.get(URL_JKDK_LIST)
