@@ -4,6 +4,7 @@ import os
 import json
 import time
 import logging
+import datetime
 from covid_test_date import get_covid_test_date
 
 URL_INDEX = "http://ehallapp.nju.edu.cn/xgfw/sys/mrjkdkappnju/index.html"
@@ -45,7 +46,8 @@ if __name__ == "__main__":
     log.info('登录成功！')
 
     r1 = auth.session.get(URL_UNREAD_LIST)
-
+    yesterday = str((datetime.datetime.today() + datetime.timedelta(-1)).date()) + " 08"
+    log.info('昨天是',yesterday)
     for count in range(10):
         log.info('尝试获取打卡列表信息...')
         r = auth.session.get(URL_JKDK_LIST)
@@ -58,7 +60,7 @@ if __name__ == "__main__":
         if dk_info['TBZT'] == "0":
             wid = dk_info['WID']
             data = "?WID={}&IS_TWZC=1&CURR_LOCATION={}&ZJHSJCSJ={}&JRSKMYS=1&IS_HAS_JKQK=1&JZRJRSKMYS=1&SFZJLN=1".format(
-                wid, curr_location, "2022-05-20 16")
+                wid, curr_location, yesterday)
             url = URL_JKDK_APPLY + data
             log.info('正在打卡')
             auth.session.get(url)
