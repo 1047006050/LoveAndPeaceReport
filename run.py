@@ -5,7 +5,7 @@ import json
 import time
 import logging
 import datetime
-from covid_test_date import get_covid_test_date
+
 
 URL_INDEX = "http://ehallapp.nju.edu.cn/xgfw/sys/mrjkdkappnju/index.html"
 URL_UNREAD_LIST = 'http://ehallapp.nju.edu.cn/psfw/sys/tzggapp/mobile/getUnReadCount.do'
@@ -25,9 +25,7 @@ if __name__ == "__main__":
     curr_location = os.getenv('CURR_LOCATION')
     token = os.getenv("SKM_TOKEN")
     uuid = os.getenv("SKM_UUID")
-    hs_date = get_covid_test_date(token,uuid)
-    if '2022' not in hs_date:
-        raise Exception("invalid hs_date")
+
 
     if username == '' or password == '' or curr_location == '':
         log.error('账户、密码或地理位置信息为空！请检查是否正确地设置了 SECRET 项（GitHub Action）。')
